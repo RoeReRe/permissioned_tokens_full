@@ -1,0 +1,17 @@
+default:
+    timestamp: 1672213705024
+    metadata: {}
+    asa: {}
+    app:
+        MasterApp:
+            1672213705:
+                creator: EAAQIDSGEJ2EWYCR4FHNTISJAKTTSVAFUYSYSCF4YUYILMPL4BU3AOCKQI
+                txID: MKCJYKZJ26GSXYBTN2UZOJAPMW63ZW54KIBQL7OTUZJJDCGNPIUA
+                confirmedRound: 149137
+                appID: 1529
+                applicationAccount: KMXVIWI5JW3ZKMRMZM6LQNJBYKDVCYNZCMYGORZZU65LMRYSDUEYAM2XQY
+                timestamp: 1672213705
+                deleted: false
+                approvalFile: master_approval.py
+                clearFile: master_clearstate.py
+    dLsig: {}

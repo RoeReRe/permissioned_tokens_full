@@ -1,0 +1,17 @@
+default:
+    timestamp: 1672215919684
+    metadata: {}
+    asa: {}
+    app:
+        ProposalApp:
+            1672215920:
+                creator: EAAQIDSGEJ2EWYCR4FHNTISJAKTTSVAFUYSYSCF4YUYILMPL4BU3AOCKQI
+                txID: G6AJHSNP7ZJQ7BY6R4TFOYLZAXUXNAKWWNUC6PBAGN5AB6FEWXQA
+                confirmedRound: 149785
+                appID: 1546
+                applicationAccount: VQXNDMVM2DNK4XCAYP2OE7BPHCKDGHYLBMKYU2DTVCTBOSITACDZGSIFPA
+                timestamp: 1672215920
+                deleted: false
+                approvalFile: proposal_approval.py
+                clearFile: proposal_clearstate.py
+    dLsig: {}

@@ -1,0 +1,10 @@
+{
+  "name": "permissioned_tokens",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@algo-builder/algob": "^7.0.0",
+    "chai": "^4.3.7"
+  }
+}
