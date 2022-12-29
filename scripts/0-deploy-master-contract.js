@@ -1,4 +1,4 @@
-const { convert, readAppGlobalState } = require("@algo-builder/algob");
+const { convert, readAppGlobalState, executeTransaction } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
 
 async function run(runtimeEnv, deployer) {
@@ -14,12 +14,10 @@ async function run(runtimeEnv, deployer) {
     const clearStateFile = "master_clearstate.py";
 
     await deployer.deployApp(
-        master,
+        approvalFile,
+        clearStateFile,
         {
-            appName: "MasterApp",
-            metaType: types.MetaType.FILE,
-            approvalProgramFilename: approvalFile,
-            clearProgramFilename: clearStateFile,
+            sender: master,
             localInts: 0,
             localBytes: 0,
             globalInts: 1,
@@ -28,11 +26,11 @@ async function run(runtimeEnv, deployer) {
         { totalFee: 1000 },
     );
 
-    const masterApp = deployer.getApp("MasterApp");
+    const masterApp = deployer.getApp(approvalFile, clearStateFile);
 
     // Fund Master Contract
     console.log("Funding Master Contract...");
-    await deployer.executeTx({
+    await executeTransaction(deployer, {
         type: types.TransactionType.TransferAlgo,
         sign: types.SignType.SecretKey,
         fromAccount: master,
@@ -43,7 +41,7 @@ async function run(runtimeEnv, deployer) {
 
     // Create tokens
     console.log("Creating tokens...")
-    await deployer.executeTx({
+    await executeTransaction(deployer, {
         type: types.TransactionType.CallApp,
         sign: types.SignType.SecretKey,
         fromAccount: master,

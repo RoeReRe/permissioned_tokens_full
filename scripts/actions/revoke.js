@@ -1,12 +1,15 @@
-const { convert, readAppGlobalState } = require("@algo-builder/algob");
+const { convert, readAppGlobalState, executeTransaction } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
 const { getAssetHoldings } = require("./helper.js");
 
 async function run(runtimeEnv, deployer) {
-    const targetAddr = deployer.accountsByName.get("user1").addr;
+    const targetAddr = deployer.accountsByName.get("user2").addr;
 
     const master = deployer.accountsByName.get("master");
-    const masterApp = deployer.getApp("MasterApp");
+
+    const masterApprovalFile = "master_approval.py";
+    const masterClearStateFile = "master_clearstate.py";
+    const masterApp = deployer.getApp(masterApprovalFile, masterClearStateFile);
     const masterState = await readAppGlobalState(deployer, master.addr, masterApp.appID);
     const assetID = masterState.get("assetID");
 
@@ -15,7 +18,7 @@ async function run(runtimeEnv, deployer) {
     console.log("Target Before:", await getAssetHoldings(deployer, targetAddr, assetID));
 
     // Revoke token
-    await deployer.executeTx({
+    await executeTransaction(deployer, {
         type: types.TransactionType.CallApp,
         sign: types.SignType.SecretKey,
         fromAccount: master,

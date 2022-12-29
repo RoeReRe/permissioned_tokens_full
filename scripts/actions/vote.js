@@ -1,21 +1,25 @@
-const { convert, readAppGlobalState, readAppLocalState } = require("@algo-builder/algob");
+const { convert, readAppGlobalState, readAppLocalState, executeTransaction } = require("@algo-builder/algob");
 const { types } = require("@algo-builder/web");
 
 async function run(runtimeEnv, deployer) {
     // For or Against
     const vote = "For";
-    const voter = deployer.accountsByName.get("user1");
+    const voter = deployer.accountsByName.get("user2");
     
     const master = deployer.accountsByName.get("master");
-    const masterApp = deployer.getApp("MasterApp");
+    
+    const masterApprovalFile = "master_approval.py";
+    const masterClearStateFile = "master_clearstate.py";
+    const proposalApprovalFile = "proposal_approval.py";
+    const proposalClearStateFile = "proposal_clearstate.py";
+    const masterApp = deployer.getApp(masterApprovalFile, masterClearStateFile);
     const masterState = await readAppGlobalState(deployer, master.addr, masterApp.appID);
     const assetID = masterState.get("assetID");
-
-    const proposalApp = deployer.getApp("ProposalApp");
+    const proposalApp = deployer.getApp(proposalApprovalFile, proposalClearStateFile);
 
     // Opt in to proposal contract
     console.log("Opting into contract...")
-    await deployer.executeTx({
+    await executeTransaction(deployer, {
         type: types.TransactionType.OptInToApp,
         sign: types.SignType.SecretKey,
         fromAccount: voter,
@@ -29,7 +33,7 @@ async function run(runtimeEnv, deployer) {
     console.log("Voter State Before:", await readAppLocalState(deployer, voter.addr, proposalApp.appID));
 
     // Vote
-    await deployer.executeTx({
+    await executeTransaction(deployer, {
         type: types.TransactionType.CallApp,
         sign: types.SignType.SecretKey,
         fromAccount: voter,

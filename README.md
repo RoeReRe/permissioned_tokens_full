@@ -41,7 +41,7 @@ Complete the stateful smart contract `assets/master_approval.py` which allows on
 Complete the stateful smart contract `assets/proposal_approval.py` which allows the creator to create a proposal. Users can then vote by making application calls to this contract.
 
 #### Init
-1. Save proposal title, description, vote count ("For / Against") and assetID in global state.
+1. Save proposal title, description, vote count ("For / Against") and asset ID in global state.
 
 #### Vote
 1. Vote either "For" or "Against" the proposal.
@@ -112,6 +112,3 @@ yarn run algob test
 # Run dapp on localhost
 yarn serve
 ```
-
-- Are we setting vote period?
-- Exploit?

@@ -45,11 +45,11 @@ describe("Negative tests", function() {
     it('Double asset creation', () => {
         // Deploy contracts
         initContracts(runtime);
-        const masterApp = runtime.getAppByName("MasterApp");
+        const masterApp = runtime.getAppInfoFromName(masterApproval, masterClearState);
 
         // Double asset creation
         assert.throws(() => {
-            runtime.executeTx([{
+            runtime.executeTx({
                 type: types.TransactionType.CallApp,
                 sign: types.SignType.SecretKey,
                 fromAccount: master.account,
@@ -59,7 +59,7 @@ describe("Negative tests", function() {
                         convert.uint64ToBigEndian(100),
                         convert.stringToBytes("voteToken"),
                         convert.stringToBytes("vote")],
-            }]);
+            });
         }, error);
     })
 

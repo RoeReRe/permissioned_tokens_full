@@ -44,8 +44,8 @@ describe("Success Flow", function() {
         // Deploy contracts
         initContracts(runtime);
 
-        assert.isDefined(runtime.getAppByName("MasterApp"));
-        assert.isDefined(runtime.getAppByName("ProposalApp"));
+        assert.isDefined(runtime.getAppInfoFromName(masterApproval, masterClearState));
+        assert.isDefined(runtime.getAppInfoFromName(proposalApproval, proposalClearState));
     })
 
     it('Opt in user1 into asset', () => {
@@ -107,7 +107,7 @@ describe("Success Flow", function() {
         helper.contractOptIn(runtime, user1.account);
 
         syncAccounts();
-        const proposalApp = runtime.getAppByName("ProposalApp");
+        const proposalApp = runtime.getAppInfoFromName(proposalApproval, proposalClearState);
         assert.equal(runtime.getLocalState(proposalApp.appID, user1.account.addr, "Voted"), 0);
     })
 
@@ -127,7 +127,7 @@ describe("Success Flow", function() {
         // Vote
         helper.vote(runtime, user1.account, "For");
 
-        const proposalApp = runtime.getAppByName("ProposalApp");
+        const proposalApp = runtime.getAppInfoFromName(proposalApproval, proposalClearState);
         assert.equal(getGlobal(proposalApp.appID, "For"), 1);
         assert.equal(getGlobal(proposalApp.appID, "Against"), 0);
     })

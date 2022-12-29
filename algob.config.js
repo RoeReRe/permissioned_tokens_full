@@ -23,23 +23,23 @@ let accounts = mkAccounts([
 		// This account is created using `make setup-master-account` command from our
 		// `/infrastructure` directory. It already has many ALGOs
 		name: "master",
-		addr: process.env.REACT_APP_CREATOR_ADDR,
-		mnemonic: process.env.REACT_APP_CREATOR_MNEMONIC,
+		addr: process.env.VUE_APP_CREATOR_ADDR,
+		mnemonic: process.env.VUE_APP_CREATOR_MNEMONIC,
 	},
 	{
 		name: "user1",
-		addr: process.env.REACT_APP_USER1_ADDR,
-		mnemonic: process.env.REACT_APP_USER1_MNEMONIC,
+		addr: process.env.VUE_APP_USER1_ADDR,
+		mnemonic: process.env.VUE_APP_USER1_MNEMONIC,
 	},
 	{
 		name: "user2",
-		addr: process.env.REACT_APP_USER2_ADDR,
-		mnemonic: process.env.REACT_APP_USER2_MNEMONIC,
+		addr: process.env.VUE_APP_USER2_ADDR,
+		mnemonic: process.env.VUE_APP_USER2_MNEMONIC,
 	},
 	{
 		name: "user3",
-		addr: process.env.REACT_APP_USER3_ADDR,
-		mnemonic: process.env.REACT_APP_USER3_MNEMONIC,
+		addr: process.env.VUE_APP_USER3_ADDR,
+		mnemonic: process.env.VUE_APP_USER3_MNEMONIC,
 	}
 ]);
 
