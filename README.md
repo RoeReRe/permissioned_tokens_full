@@ -112,6 +112,3 @@ yarn run algob test
 # Run dapp on localhost
 yarn serve
 ```
-
-- Are we setting vote period?
-- Exploit?
