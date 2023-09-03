@@ -1,4 +1,4 @@
-# Assessment on Algorand Smart Contracts
+# Sample assessment on Algorand Smart Contracts
 A permissioned voting application is a voting application that only allows authorised users to vote. A central authority creates a vote token and assigns voters one token each. The voter then registers for a proposal by opting into the contract and votes with an application call.
 
 As only accounts possessing the token can vote, permissioned voting prevents unauthorised users from voting.
