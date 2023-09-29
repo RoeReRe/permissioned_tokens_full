@@ -1,4 +1,4 @@
-# Sample assessment on Algorand Smart Contracts with solution
+# Permission Voting Algorand Smart Contracts (with VueJS Frontend)
 A permissioned voting application is a voting application that only allows authorised users to vote. A central authority creates a vote token and assigns voters one token each. The voter then registers for a proposal by opting into the contract and votes with an application call.
 
 As only accounts possessing the token can vote, permissioned voting prevents unauthorised users from voting.
@@ -19,7 +19,7 @@ As only accounts possessing the token can vote, permissioned voting prevents una
 1. `rekey to`, `close remainder to`, `asset close to` addresses are not found in the transactions.
 
 ### Master Contract
-Complete the stateful smart contract `assets/master_approval.py` which allows only the creator mint, issue and revoke the permissioned token.
+Stateful smart contract `assets/master_approval.py` which allows only the creator mint, issue and revoke the permissioned token.
 
 #### Minting
 1. Prevent double asset creation.
@@ -38,7 +38,7 @@ Complete the stateful smart contract `assets/master_approval.py` which allows on
 3. Clawback 1 token from user.
 
 ### Proposal Contract
-Complete the stateful smart contract `assets/proposal_approval.py` which allows the creator to create a proposal. Users can then vote by making application calls to this contract.
+Stateful smart contract `assets/proposal_approval.py` which allows the creator to create a proposal. Users can then vote by making application calls to this contract.
 
 #### Init
 1. Save proposal title, description, vote count ("For / Against") and assetID in global state.
@@ -54,18 +54,19 @@ Complete the stateful smart contract `assets/proposal_approval.py` which allows 
 2. Fund master contract with algos to perform asset transfer.
 3. Deploy the proposal contract with the proposal information.
 
-Complete the server side scripts to allow the creator to issue and revoke tokens.
+Server side scripts are provided to allow the creator to issue and revoke tokens.
 
 ## Frontend interaction
-This repository contains a VueJS frontend with some basic wallet integration. It displays a form which allows connected accounts to vote in a simple HTML form. Feel free to replace this with ReactJS (or any other JS frontend frameworks) if you wish. However, the completed app should do the following,
+This repository contains a VueJS frontend with some basic wallet integration. It displays a form which allows connected accounts to vote in a simple HTML form. Feel free to replace this with ReactJS (or any other JS frontend frameworks) if you wish.
+The current frontend should:
 
 1. Allow authorised user to successfully vote.
 2. Display the proposal title, description and latest vote count.
 
 ## Testing
-Write test cases to cover the successful contract deployment, as well as negative tests.
+Test cases are provided to cover the successful contract deployment, as well as negative tests.
 
-Your contract should cover at least the following negative tests.
+The contract should cover at least the following negative tests.
 
 - Double asset creation fails
 - Fail to issue token when user has not opted into asset
@@ -79,7 +80,7 @@ Your contract should cover at least the following negative tests.
 - Voting more than once fails
 
 ## Deployment
-Your application should be able to connect to AlgoSigner (localhost) and allow the connected account to vote. As an added bonus, try to deploy your application to TestNet as well.
+The application should be able to connect to AlgoSigner (localhost) and allow the connected account to vote. It can be deployed to TestNet as well.
 
 ## Setup instructions
 
